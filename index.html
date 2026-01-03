@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mercury Lamp</title>
-    <link rel="icon" type="image/png" href="img/Logo.ico">
+    <link rel="icon" href="img/Logo.ico">
     <style>
         @font-face {
             font-family: 'Goth';
@@ -130,10 +130,6 @@
             text-shadow: 0 0 10px rgb(0, 0, 0);
             letter-spacing: 2px;
             font-family: 'BeautifulES', cursive;
-        }
-        
-        body, body * {
-            cursor: url('img/1.png') 8 8, auto;
         }
         
         .feathers-container {
@@ -469,7 +465,7 @@
             font-size: 18px;
             color: #ffffff; 
         }
-        
+
         .sender-name {
             display: inline-block;
             width: 120px;
@@ -477,7 +473,10 @@
             border-bottom: 1px solid #666666;
             padding: 0 5px;
             margin: 0 5px;
-            color: #ffffff; 
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: bold;
+            font-family: 'Goth', serif;
         }
         
         .send-button {
@@ -646,9 +645,10 @@
         
         .about-page {
             position: relative;
-            max-width: 800px;
-            margin: auto;
-            padding: 40px;
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 60px 40px 80px;
             background: rgb(0, 0, 0);
             border: 3px solid #666666;
             border-radius: 10px;
@@ -656,14 +656,19 @@
             z-index: 2;
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition: opacity 2s ease, transform 2s ease;
             display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: auto;
+            margin-bottom: 40px;
         }
         
         .about-page.visible {
             opacity: 1;
             transform: translateY(0);
-            display: block;
+            display: flex;
         }
         
         .about-page::before {
@@ -685,6 +690,7 @@
             padding-bottom: 20px;
             border-bottom: 2px solid rgba(255, 255, 255, 0.3);
             position: relative;
+            width: 100%;
         }
         
         .about-title {
@@ -716,6 +722,12 @@
             font-size: 18px;
             text-align: justify;
             color: #ffffff;
+            width: 100%;
+            margin-bottom: 20px;
+            flex-grow: 1;
+            opacity: 1;
+            transform: none;
+            transition: none;
         }
 
         .about-content a {
@@ -738,23 +750,19 @@
         .about-content p {
             margin-bottom: 20px;
             text-indent: 2em;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        
-        .about-content p.visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: none;
+            transition: none;
         }
         
         .about-footer {
             margin-top: 40px;
-            text-align: right;
+            text-align: center;
             padding-top: 20px;
             border-top: 2px solid rgba(255, 255, 255, 0.3);
             color: #cccccc;
             font-style: italic;
+            width: 100%;
             opacity: 0;
             transform: translateY(10px);
             transition: opacity 0.6s ease, transform 0.6s ease;
@@ -858,6 +866,12 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        @media (hover: hover) and (pointer: fine) {
+            body, body * {
+                cursor: url('img/1.png') 8 8, auto;
+            }
+        }
         
         @media (max-width: 768px) {
             .directory-container, .letter-page, .about-page {
@@ -901,6 +915,12 @@
                 margin-bottom: 110px;
             }
             
+            .sender-name {
+                font-size: 16px;
+                padding: 0 3px;
+                width: 100px;
+            }
+            
             .logo-loading-container {
                 width: 150px;
                 height: 150px;
@@ -932,23 +952,44 @@
             
             .about-content {
                 font-size: 16px;
+                text-align: left;
+                line-height: 1.6;
+            }
+            
+            .about-content p {
+                text-indent: 1.5em;
+                margin-bottom: 15px;
             }
             
             .letter-back-button {
                 margin-top: 0;
                 margin-bottom: 20px;
                 position: relative;
+                padding: 10px 25px;
+                font-size: 14px;
             }
             
             .about-back-button {
                 padding: 10px 25px;
                 font-size: 14px;
+                width: 100%;
+                max-width: 200px;
+                margin: 20px auto 0;
+            }
+            
+            .about-footer {
+                margin-top: 30px;
+                padding-top: 15px;
+                font-size: 14px;
+                text-align: center;
             }
             
             .send-button {
                 align-self: center;
                 width: 100%;
                 max-width: 200px;
+                padding: 10px 25px;
+                font-size: 14px;
             }
             
             .image-upload-container {
@@ -956,6 +997,67 @@
                 height: 100px;
                 bottom: 15px;
                 left: 15px;
+            }
+
+            .cursor-trail {
+                display: none !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .directory-container, .letter-page, .about-page {
+                padding: 30px 15px 50px;
+            }
+            
+            .directory-title, .about-title {
+                font-size: 28px;
+            }
+            
+            .date, .about-date {
+                font-size: 14px;
+            }
+            
+            .instruction-text {
+                font-size: 20px;
+                margin-bottom: 30px;
+            }
+            
+            .continue-button, .letter-back-button, .about-back-button, .send-button {
+                padding: 8px 20px;
+                font-size: 14px;
+            }
+            
+            .about-content {
+                font-size: 15px;
+                line-height: 1.5;
+            }
+            
+            .about-content p {
+                text-indent: 1em;
+                margin-bottom: 12px;
+            }
+            
+            .letter-container {
+                padding: 15px 10px;
+                min-height: 300px;
+                padding-bottom: 110px;
+            }
+            
+            .letter-content {
+                font-size: 14px;
+                line-height: 24px;
+                margin-bottom: 90px;
+            }
+            
+            .recipient-name, .sender-name {
+                width: 80px;
+                font-size: 14px;
+            }
+            
+            .about-footer {
+                font-size: 12px;
+                margin-top: 20px;
+                padding-top: 10px;
             }
         }
     </style>
@@ -1010,7 +1112,7 @@
                     <div class="image-upload-cross"></div>
                     <div class="image-upload-text">添加照片</div>
                     <img class="image-preview" id="imagePreview" alt="预览图片">
-                    <div class="image-remove-button" id="imageRemoveButton">×</div>
+                    <div class="image-remove-button" id="imageRemoveButton">x</div>
                     <input type="file" id="imageUploadInput" accept="image/*" style="display: none;">
                 </div>
                 
@@ -1041,9 +1143,10 @@
         
         <div class="about-content">
             <p>Mercury Lamp（水银灯）是一个给逝者写信或寄语的网站。</p>
-            <p>由于是基于电脑端为主制作，其他平台如手机端显示可能会有异常，请见谅。</p>
+            <p>由于页面基于电脑端制作，其他如手机端显示可能异常，请见谅。</p>
             <p>无论是您亲爱的人、还是挚爱的宠物，想给逝者写信的话，就请放心在这里写吧！</p>
             <p>2025.12.31：新增添加图片功能，您可以上传自己的照片。</p>
+            <p>2026.1.3：修复显示错误，修改样式等已知问题。</p>
             <p>本网站不会获取您的任何数据。</p>
             <p>谢谢。</p>
             <br>
@@ -1052,7 +1155,7 @@
         </div>
         <button class="about-back-button" id="aboutBackButton">返回</button>
 
-        <div class="about-footer"></div>
+        <div class="about-footer">- Mercury Lamp -</div>
     </div>
     
     <div class="send-success-overlay" id="sendSuccessOverlay">
@@ -1223,10 +1326,10 @@
             
             letterContentEventsBound = true;
             
-            const placeholderText = '在这里写下您的信件内容...';
+            const placeholderText = '在这里写下您的信件内容……';
             
             if (!letterContent.textContent.trim() || letterContent.textContent.trim() === placeholderText) {
-                letterContent.innerHTML = '<p style="margin-bottom: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在这里写下您的信件内容...</p>';
+                letterContent.innerHTML = '<p style="margin-bottom: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在这里写下您的信件内容……</p>';
                 letterContent.style.color = '#888888';
             }
             
@@ -1334,7 +1437,7 @@
                 let content = document.getElementById('letterContent').textContent.trim();
                 const sender = document.getElementById('senderName').textContent.trim();
                 
-                if (content === "在这里写下您的信件内容...") {
+                if (content === "在这里写下您的信件内容……") {
                     content = "";
                 }
                 
@@ -1344,7 +1447,7 @@
                 }
                 
                 if (!content) {
-                    alert('请输入内容。');
+                    alert('请输入正文内容。');
                     return;
                 }
                 
@@ -1353,13 +1456,7 @@
                     return;
                 }
                 
-                // 如果有上传的图片，可以在这里处理
-                if (uploadedImageData) {
-                    // 在实际应用中，这里可以将图片数据发送到服务器
-                    console.log("信件包含一张图片");
-                }
-                
-                successMessage.textContent = `已发送给${recipient}了，将返回主页。`;
+                successMessage.textContent = `已经发送给${recipient}了，将返回主页。`;
                 sendSuccessOverlay.classList.add('active');
                 
                 setTimeout(() => {
@@ -1384,15 +1481,13 @@
                             setTimeout(() => {
                                 directoryContainer.classList.add('visible');
                             }, 50);
-                            
-                            // 重置表单
+
                             document.getElementById('recipientName').textContent = '';
                             document.getElementById('senderName').textContent = '';
                             const letterContent = document.getElementById('letterContent');
-                            letterContent.innerHTML = '<p style="margin-bottom: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在这里写下您的信件内容...</p>';
+                            letterContent.innerHTML = '<p style="margin-bottom: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在这里写下您的信件内容……</p>';
                             letterContent.style.color = '#888888';
-                            
-                            // 重置图片上传区域
+
                             resetImageUpload();
                             
                             window.scrollTo(0, 0);
@@ -1407,15 +1502,13 @@
             const imageUploadInput = document.getElementById('imageUploadInput');
             const imagePreview = document.getElementById('imagePreview');
             const imageRemoveButton = document.getElementById('imageRemoveButton');
-            
-            // 点击上传区域触发文件选择
+
             imageUploadContainer.addEventListener('click', function(e) {
                 if (!imageUploadContainer.classList.contains('has-image')) {
                     imageUploadInput.click();
                 }
             });
-            
-            // 文件选择变化时显示预览
+
             imageUploadInput.addEventListener('change', function(e) {
                 const file = e.target.files[0];
                 if (file && file.type.startsWith('image/')) {
@@ -1424,16 +1517,15 @@
                     reader.onload = function(e) {
                         imagePreview.src = e.target.result;
                         imageUploadContainer.classList.add('has-image');
-                        uploadedImageData = e.target.result; // 存储图片数据
+                        uploadedImageData = e.target.result;
                     };
                     
                     reader.readAsDataURL(file);
                 }
             });
-            
-            // 移除图片
+
             imageRemoveButton.addEventListener('click', function(e) {
-                e.stopPropagation(); // 防止触发上传区域点击事件
+                e.stopPropagation();
                 resetImageUpload();
             });
         }
@@ -1497,7 +1589,7 @@
                     pageTransition.classList.remove('active');
                     directoryContainer.style.display = 'none';
                     letterPage.style.display = 'none';
-                    aboutPage.style.display = 'block';
+                    aboutPage.style.display = 'flex';
                     
                     setTimeout(() => {
                         aboutPage.classList.add('visible');
@@ -1535,7 +1627,6 @@
         
         function initAboutScrollAnimation() {
             const aboutPage = document.getElementById('aboutPage');
-            const paragraphs = document.querySelectorAll('.about-content p');
             const footer = document.querySelector('.about-footer');
             const backButton = document.getElementById('aboutBackButton');
             
@@ -1550,12 +1641,6 @@
                 if (isInViewport(aboutPage)) {
                     aboutPage.classList.add('visible');
                 }
-                
-                paragraphs.forEach(p => {
-                    if (isInViewport(p)) {
-                        p.classList.add('visible');
-                    }
-                });
                 
                 if (isInViewport(footer)) {
                     footer.classList.add('visible');
@@ -1574,7 +1659,11 @@
         window.onload = function() {
             initLoadingAnimation();
             createFeathers();
-            initCursorTrail();
+
+            if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+                initCursorTrail();
+            }
+            
             initPageTransition();
             initLetterBackButton(); 
             initAboutPage();
